@@ -24,9 +24,7 @@
       <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
 
       <button class="chrome-btn home-btn" id="homeBtn" type="button" aria-label="Home" title="Home">
-        <svg class="gold-home-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M2 11.2 12 3l10 8.2v9.3a1.5 1.5 0 0 1-1.5 1.5h-5.2v-6.5H8.7V22H3.5A1.5 1.5 0 0 1 2 20.5z"/>
-        </svg>
+        <span class="pixel-home" aria-hidden="true"></span>
       </button>
 
       <label class="address-wrap" for="sj-address">
@@ -49,5 +47,13 @@
       <div class="status-wrap"><p id="sj-error"></p><pre id="sj-error-code"></pre></div>
     </section>
   </main>
+    <div id="sj-loading-overlay" class="sj-loading-overlay" aria-hidden="true">
+      <div class="sj-loading-card">
+        <img src="LoadingBee.gif" alt="Loading" class="sj-loading-bee" />
+        <div class="sj-loading-text">LOADING...</div>
+        <div class="sj-loading-track"><span></span></div>
+      </div>
+    </div>
+
 </body>
 </html>
