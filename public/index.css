@@ -59,25 +59,14 @@ button, input { font: inherit; }
 .chrome-btn:hover { color: var(--loading-gold-bright); border-color: var(--loading-gold); background:#1b1711; }
 .home-btn { border-color: var(--loading-gold-dark); }
 .go-btn { color: var(--loading-gold-bright); border-color: var(--loading-gold); background:#2a210d; }
-.pixel-home {
-  position: relative;
-  width: 18px;
-  height: 14px;
-  margin-top: 5px;
-  background: var(--loading-gold);
-  box-shadow: 4px 0 0 var(--loading-gold), 8px 0 0 var(--loading-gold), 0 4px 0 var(--loading-gold), 4px 4px 0 var(--loading-gold), 8px 4px 0 var(--loading-gold);
+.home-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  fill: var(--loading-gold-bright);
+  filter: drop-shadow(2px 2px 0 #000);
 }
-.pixel-home::before {
-  content:"";
-  position:absolute;
-  left:-4px;
-  top:-7px;
-  width:4px;
-  height:4px;
-  background:var(--loading-gold);
-  box-shadow:4px -4px 0 var(--loading-gold),8px -8px 0 var(--loading-gold),12px -4px 0 var(--loading-gold),16px 0 0 var(--loading-gold);
-}
-.pixel-home::after { content:""; position:absolute; width:4px; height:7px; right:1px; bottom:0; background:#111; }
+.home-btn:hover .home-icon { fill: var(--loading-gold); }
 .address-wrap {
   height: 36px;
   display: grid;
