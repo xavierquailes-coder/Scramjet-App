@@ -40,11 +40,24 @@ function bindFrameNavigationSignals(){
     const doc=iframe.contentDocument;
     if(!doc||doc.__sqBeeBound)return;
     doc.__sqBeeBound=true;
-    doc.addEventListener("pointerdown",e=>{
-      const a=e.target&&e.target.closest?e.target.closest("a[href],button,input[type=submit]"):null;
-      if(a)showLoadingBee();
+
+    // Only show the bee for a real left-click navigation.
+    // Do not trigger it for right-click/copy, fullscreen, menus, downloads,
+    // hash links, JavaScript actions, mail links, or ordinary buttons.
+    doc.addEventListener("click",e=>{
+      if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+      const a=e.target&&e.target.closest?e.target.closest("a[href]"):null;
+      if(!a||a.hasAttribute("download"))return;
+      const href=(a.getAttribute("href")||"").trim();
+      if(!href||href==="#"||href.startsWith("#")||/^(javascript:|mailto:|tel:|data:|blob:)/i.test(href))return;
+      showLoadingBee();
     },true);
-    doc.addEventListener("submit",()=>showLoadingBee(),true);
+
+    // Searches and other genuine form navigations.
+    doc.addEventListener("submit",e=>{
+      const form=e.target;
+      if(form&&form.matches&&form.matches("form"))showLoadingBee();
+    },true);
   }catch(_){}
 }
 
