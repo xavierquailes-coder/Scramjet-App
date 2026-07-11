@@ -1,66 +1,51 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-		/>
-		<title>Scramjet</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta name="color-scheme" content="dark" />
+  <title>SquiddCore Browser</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <script src="/scram/scramjet.all.js"></script>
+  <script src="/baremux/index.js"></script>
+  <link rel="stylesheet" href="index.css" />
+  <script src="register-sw.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <main class="browser-home">
+    <form id="sj-form" class="browser-toolbar" autocomplete="off">
+      <input id="sj-search-engine" value="https://duckduckgo.com/?q=%s&kae=d" type="hidden" />
 
-		<link rel="shortcut icon" content="favicon.webp" />
-	
-		<script src="/scram/scramjet.all.js"></script>
-		<script src="/baremux/index.js"></script>
-		
-		<link rel="stylesheet" href="index.css" />
-		<script src="register-sw.js" defer></script>
-		<script src="search.js" defer></script>
-		<script src="index.js" defer></script>
-	</head>
+      <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
 
-	<body>
-		<div title="Scramjet Logo" class="flex-center logo-wrapper header-center">
-			<img class="logo" src="sj.png" alt="Scramjet" />
-			<h1>Scramjet | MW</h1>
-		</div>
-		<div class="flex-center desc left-margin">
-			<p>
-				Scramjet is an experimental interception based web proxy designed to
-				evade internet censorship, bypass arbitrary web browser restrictions and
-				innovate web proxy technologies.
-			</p>
-		</div>
+      <button class="chrome-btn home-btn" id="homeBtn" type="button" aria-label="Home" title="Home">
+        <span class="pixel-home" aria-hidden="true"></span>
+      </button>
 
-		<form id="sj-form" class="flex-center">
-			<input
-				id="sj-search-engine"
-				value="https://www.google.com/search?q=%s"
-				type="hidden"
-			/>
-			<input id="sj-address" type="text" placeholder="Search the web freely" />
-		</form>
-		<div class="desc left-margin">
-			<p id="sj-error"></p>
-			<pre id="sj-error-code"></pre>
-		</div>
-		<footer>
-			<div>
-				<a
-					title="The Mercury Workshop GitHub organization"
-					href="https://github.com/MercuryWorkshop"
-					>Mercury Workshop</a
-				>
-				<a
-					title="The example demo app for Scramjet"
-					href="https://github.com/MercuryWorkshop/Scramjet-Demo"
-					>GitHub</a
-				>
-				<a title="License information" href="credits.html">Credits</a>
-			</div>
-			<div>
-				<span>Scramjet &copy; MW 2025</span>
-			</div>
-		</footer>
-	</body>
+      <label class="address-wrap" for="sj-address">
+        <span class="lock-icon" aria-hidden="true">🔒</span>
+        <input id="sj-address" type="text" value="https://duckduckgo.com" placeholder="Search DuckDuckGo or enter a URL..." aria-label="Search DuckDuckGo or enter a URL" spellcheck="false" autocomplete="off" />
+      </label>
+
+      <button class="chrome-btn" id="backBtn" type="button" aria-label="Back" title="Back">←</button>
+      <button class="chrome-btn" id="refreshBtn" type="button" aria-label="Refresh" title="Refresh">↻</button>
+      <button class="chrome-btn go-btn" type="submit" aria-label="Go" title="Go">↵</button>
+    </form>
+
+    <section class="browser-stage" aria-label="Browser home">
+      <div class="wallpaper" aria-hidden="true"></div>
+      <div class="dim-layer" aria-hidden="true"></div>
+      <div class="ready-card">
+        <div class="globe" aria-hidden="true">🌐</div>
+        <p>Proxy is ready! Search without<br />restrictions.</p>
+      </div>
+      <div class="status-wrap"><p id="sj-error"></p><pre id="sj-error-code"></pre></div>
+    </section>
+  </main>
+</body>
 </html>
