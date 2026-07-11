@@ -7,6 +7,7 @@ const errorCode=document.getElementById("sj-error-code");
 const homeBtn=document.getElementById("homeBtn");
 const backBtn=document.getElementById("backBtn");
 const refreshBtn=document.getElementById("refreshBtn");
+const fullscreenBtn=document.getElementById("fullscreenBtn");
 const {ScramjetController}=$scramjetLoadController();
 const scramjet=new ScramjetController({files:{wasm:"/scram/scramjet.wasm.wasm",all:"/scram/scramjet.all.js",sync:"/scram/scramjet.sync.js"}});
 scramjet.init();
@@ -82,3 +83,24 @@ homeBtn.addEventListener("click",()=>{
 backBtn.addEventListener("click",()=>{if(!activeFrame)return;showLoadingBee();try{activeFrame.frame.contentWindow.history.back();}catch(_){hideLoadingBee();}});
 refreshBtn.addEventListener("click",()=>{if(!activeFrame)return;showLoadingBee();try{activeFrame.frame.contentWindow.location.reload();}catch(_){const current=readCurrentTarget();if(current)activeFrame.go(current);else hideLoadingBee();}});
 address.addEventListener("focus",()=>address.select());
+
+function syncFullscreenButton(){
+  if(!fullscreenBtn)return;
+  const active=!!document.fullscreenElement;
+  fullscreenBtn.classList.toggle("is-fullscreen",active);
+  fullscreenBtn.setAttribute("aria-label",active?"Exit fullscreen":"Enter fullscreen");
+  fullscreenBtn.title=active?"Exit fullscreen":"Fullscreen";
+}
+if(fullscreenBtn){
+  fullscreenBtn.addEventListener("click",async()=>{
+    try{
+      if(document.fullscreenElement)await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    }catch(err){
+      error.textContent="Fullscreen was blocked by the browser.";
+      errorCode.textContent=err?.toString?.()||String(err);
+    }
+  });
+  document.addEventListener("fullscreenchange",syncFullscreenButton);
+  syncFullscreenButton();
+}
