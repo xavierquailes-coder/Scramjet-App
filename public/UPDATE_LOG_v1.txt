@@ -1,0 +1,39 @@
+SquiddCoreOS Update Log
+
+Version: v1.0 (Launch Version)
+
+Added / Fixed:
+- Added Lena Raine Minecraft music to the Minecraft Jukebox.
+- Added these Lena Raine tracks:
+  - Deeper
+  - Eld Unknown
+  - Endless
+  - Creator
+  - Creator (Music Box Version)
+- Fixed the jukebox track layout so the song title shows on top and the artist name shows underneath.
+- Added Minecraft-style font/styling to the jukebox song list.
+- Changed the jukebox header from “C418 soundtrack player” to “Minecraft soundtrack player” because Lena Raine tracks are included too.
+- Added shuffle mode to the jukebox.
+- Added repeat all mode to the jukebox.
+- Added repeat one mode to the jukebox.
+- Added Spotify-style jukebox control functionality, then restyled the buttons back into a Minecraft/block style.
+- Moved shuffle into the bottom control area with the other playback mode controls.
+- Adjusted jukebox button layout so the main controls and mode controls are separated.
+- Added a music player keybind setting.
+- Set the default music player keybind to Ctrl + M.
+- Added a Music button in the in-game controls bar so music can be opened while playing.
+- Added the movie code from the provided RyugasIXLWork code.
+- Patched the Movies button so it opens inside SquiddCoreOS instead of showing the old broken message.
+- Removed the “Movies don’t work at this time” warning box.
+- Added a backup movie loader so movie rows can still show if the main loader/API is slow.
+- Attempted to replace the broken welcome card image with the half-Mii / half-pixel image.
+- Kept the SquiddCoreOS Minecraft theme and visual style intact while adding the new features.
+
+Known Issue:
+- The small welcome card image may still be pulling from another hidden/cached reference and may need a deeper trace later.
+LATEST UPDATES
+- Changed the proxy from Cloudflare Workers to Scramjet.
+- Added 2 new partners: MiiCore OS and Squiddo OS.
+- Added options to hide individual items on the home screen.
+- Added custom cursor options.
+- Changed the site wallpaper.
