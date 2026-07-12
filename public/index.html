@@ -24464,7 +24464,7 @@ window.sqOpenDarkDuckDuckGo=go;
 <script id="sq-scramjet-local-integration">
 (function(){
   'use strict';
-  var SCRAMJET_URL='https://scramjet-app-vpbo.onrender.com/';
+  var SCRAMJET_URL='https://scramjet-app-vpbo.onrender.com/browser/';
   function byId(id){return document.getElementById(id)}
   function frame(){return byId('browserFrame') || document.querySelector('#browserScreen iframe')}
   function openBrowserApp(){
@@ -24552,7 +24552,7 @@ window.sqOpenDarkDuckDuckGo=go;
 </style>
 <script id="sq-scramjet-embed-final-js">
 (function(){
-  const SCRAMJET_URL='https://scramjet-app-vpbo.onrender.com/';
+  const SCRAMJET_URL='https://scramjet-app-vpbo.onrender.com/browser/';
   function frame(){ return document.getElementById('browserFrame'); }
   function openEmbeddedBrowser(e){
     if(e){ e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); }
@@ -24623,7 +24623,7 @@ body.sq-browser-open-clean #sqBrowserHomeClean{display:flex!important}
 <script id="sq-browser-and-leave-clean-js">
 (function(){
  'use strict';
- var SCRAMJET='https://scramjet-app-vpbo.onrender.com/';
+ var SCRAMJET='https://scramjet-app-vpbo.onrender.com/browser/';
  var internalMove=false;
  function $(id){return document.getElementById(id)}
  function browserScreen(){return $('browserScreen')}
@@ -24706,7 +24706,7 @@ body.sq-browser-open-clean #sqBrowserHomeClean{display:flex!important}
 <script id="sq-render-proxy-authoritative-fix">
 (function(){
   'use strict';
-  var RENDER_PROXY='https://scramjet-app-vpbo.onrender.com/';
+  var RENDER_PROXY='https://scramjet-app-vpbo.onrender.com/browser/';
   function frame(){return document.getElementById('browserFrame')||document.querySelector('#browserScreen iframe');}
   function screen(){return document.getElementById('browserScreen');}
   function setProxy(){
