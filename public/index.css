@@ -117,3 +117,100 @@ body.proxy-open .browser-toolbar { position:fixed; top:3px; left:3px; right:3px;
 .sj-loading-track{height:9px;margin-top:14px;background:#252015;border:2px solid var(--loading-gold-dark);overflow:hidden;}
 .sj-loading-track span{display:block;width:42%;height:100%;background:var(--loading-gold);animation:sjLoadBar 1.05s linear infinite;}
 @keyframes sjLoadBar{0%{transform:translateX(-110%)}100%{transform:translateX(340%)}}
+
+/* Multi-tab browser and bookmarks */
+.browser-home{
+  grid-template-rows:42px 58px 1fr;
+}
+.tab-strip{
+  position:relative;
+  z-index:1200;
+  min-width:0;
+  display:flex;
+  align-items:end;
+  gap:6px;
+  padding:6px 8px 0;
+  background:#0d0d0f;
+  border-bottom:1px solid #29242a;
+  overflow:hidden;
+}
+.tab-list{
+  min-width:0;
+  flex:1;
+  display:flex;
+  align-items:end;
+  gap:5px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.tab-list::-webkit-scrollbar{display:none}
+.browser-tab{
+  min-width:150px;
+  max-width:245px;
+  height:34px;
+  display:grid;
+  grid-template-columns:18px minmax(0,1fr) 24px;
+  align-items:center;
+  gap:7px;
+  padding:0 6px 0 10px;
+  border:1px solid #2d292e;
+  border-bottom:0;
+  border-radius:9px 9px 0 0;
+  background:#17161a;
+  color:#8d878e;
+  cursor:pointer;
+  box-shadow:inset 0 1px rgba(255,255,255,.025);
+}
+.browser-tab.active{
+  background:#242126;
+  color:#f2edf2;
+  border-color:#46391e;
+  box-shadow:inset 0 2px var(--loading-gold-dark);
+}
+.tab-favicon{font-size:12px;filter:sepia(1) saturate(3)}
+.tab-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px;text-align:left}
+.tab-close{
+  width:22px;height:22px;border:0;background:transparent;color:#777078;cursor:pointer;font-size:15px;line-height:1;
+}
+.tab-close:hover{color:#fff;background:#3a2529}
+.tab-action{
+  flex:0 0 auto;width:34px;height:34px;margin-bottom:0;border:1px solid #2d292e;border-bottom:0;border-radius:8px 8px 0 0;
+  background:#17161a;color:#d6ced5;cursor:pointer;font-size:17px;
+}
+.tab-action:hover{color:var(--loading-gold-bright);background:#211c16}
+.bookmark-menu-btn{font-size:13px;color:var(--loading-gold-bright)}
+.browser-toolbar{
+  grid-template-columns:42px 46px minmax(220px,1fr) 38px 38px 38px 38px 38px;
+}
+.bookmark-btn.is-bookmarked{color:var(--loading-gold-bright);background:#2a210d;border-color:var(--loading-gold)}
+.bookmarks-panel{
+  position:fixed;top:103px;right:10px;z-index:5000;width:min(360px,calc(100vw - 20px));max-height:calc(100vh - 118px);
+  display:none;overflow:hidden;border:2px solid var(--loading-gold-dark);background:#111013;box-shadow:0 18px 50px rgba(0,0,0,.72);
+}
+.bookmarks-panel.open{display:block}
+.bookmarks-header{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #2b272c;color:var(--loading-gold-bright);font-size:9px}
+.bookmarks-header button{width:28px;height:28px;border:0;background:transparent;color:#aaa2aa;cursor:pointer;font-size:20px}
+.bookmarks-list{max-height:calc(100vh - 190px);overflow:auto;padding:7px}
+.bookmark-row{display:grid;grid-template-columns:minmax(0,1fr) 30px;gap:5px;align-items:center;border-bottom:1px solid #242126}
+.bookmark-open{min-width:0;padding:11px 8px;border:0;background:transparent;color:#ded8de;text-align:left;cursor:pointer}
+.bookmark-open:hover{background:#211c16;color:var(--loading-gold-bright)}
+.bookmark-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px;margin-bottom:6px}
+.bookmark-url{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#777078;font:10px Arial,sans-serif}
+.bookmark-delete{width:28px;height:28px;border:0;background:transparent;color:#786f76;cursor:pointer;font-size:16px}
+.bookmark-delete:hover{color:#ff8b8b}
+.empty-bookmarks{display:none;margin:0;padding:24px 12px;text-align:center;color:#777078;font-size:8px;line-height:1.8}
+.empty-bookmarks.show{display:block}
+#sj-frame,.sj-tab-frame{
+  top:103px !important;
+  height:calc(100vh - 106px) !important;
+}
+body.proxy-open .browser-toolbar{top:45px}
+@media(max-width:700px){
+  .browser-home{grid-template-rows:40px 54px 1fr}
+  .browser-tab{min-width:128px;max-width:185px;height:32px;grid-template-columns:15px minmax(0,1fr) 22px;padding-left:7px}
+  .tab-title{font-size:7px}.tab-action{width:31px;height:32px}
+  .browser-toolbar{grid-template-columns:26px 36px minmax(0,1fr) 34px 34px 34px 34px 34px}
+  #sj-frame,.sj-tab-frame{top:94px!important;height:calc(100vh - 97px)!important}
+  body.proxy-open .browser-toolbar{top:43px}
+  .bookmarks-panel{top:97px}
+}
