@@ -439,3 +439,32 @@ document.addEventListener("fullscreenchange", syncFullscreenButton);
 createTab(HOME_URL, true);
 renderBookmarks();
 syncFullscreenButton();
+
+
+// SquiddCore app launcher bridge
+(function(){
+  let queuedTarget='';
+  function validHttpUrl(value){
+    try{const u=new URL(value);return /^https?:$/.test(u.protocol)?u.href:''}catch(_){return ''}
+  }
+  async function openSquiddCoreTarget(raw){
+    const target=validHttpUrl(raw);
+    if(!target)return;
+    queuedTarget=target;
+    try{
+      if(!tabs.length)createTab(HOME_URL,true);
+      await navigate(target,activeTabId);
+      queuedTarget='';
+    }catch(_){setTimeout(()=>openSquiddCoreTarget(target),800)}
+  }
+  window.addEventListener('message',event=>{
+    const data=event.data||{};
+    if(data.type==='squiddcore-open-url')openSquiddCoreTarget(data.url);
+  });
+  window.addEventListener('load',()=>{
+    try{window.parent.postMessage({type:'squiddcore-browser-ready'},'*')}catch(_){}
+    const q=new URLSearchParams(location.search);
+    const initial=q.get('open');
+    if(initial)setTimeout(()=>openSquiddCoreTarget(initial),450);
+  });
+})();
